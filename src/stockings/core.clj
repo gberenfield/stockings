@@ -4,8 +4,9 @@
    from Yahoo! Finance."
   {:author "Filippo Tampieri <fxt@fxtlabs.com>"}
   (:use [clojure.string :only (split join lower-case)]
-        [clojure.contrib.def :only (defvar defvar-)]
-        [clojure.contrib.json :only (read-json)])
+        ;[clojure.contrib.def :only (defvar defvar-)]
+        ;[clojure.contrib.json :only (read-json)])
+        [clojure.data.json :only (read-json)])
   (:require [clj-http.client :as client]
             [stockings.utils :as yql])
   (:import (org.joda.time LocalDate LocalTime DateTimeZone)
@@ -78,7 +79,8 @@
 ;;; WARNING: use it only for data retrieved from the quotes.csv
 ;;; service above!
 
-(defvar- nyc-date-time-zone
+;(defvar- nyc-date-time-zone
+(def nyc-date-time-zone
   (DateTimeZone/forTimeZone (TimeZone/getTimeZone "America/New_York")))
 
 (defn get-correct-date-time [^LocalDate date ^LocalTime time]
@@ -90,7 +92,7 @@
 ;;; Get current quotes
 ;;;
 
-(defvar- quote-parse-map
+(def quote-parse-map
   {:symbol identity
    :Name identity
    :PERatio yql/parse-double
@@ -148,7 +150,7 @@
    the corresponding value strings of the raw stock quote into useful
    typed values (ints, doubles, dates, etc.).")
 
-(defvar raw-quote-keys (keys quote-parse-map)
+(def raw-quote-keys (keys quote-parse-map)
   "A list of all the keys available in a raw stock quote. A custom stock
    quote can be created by supplying `get-quote` with a parser capable of
    extracting the value corresponding to a chosen subset of these keys
@@ -187,7 +189,7 @@
     (apply hash-map
            (mapcat (fn [[k v]] [k (parse-quote-item raw-quote v)]) key-map))))
 
-(defvar- default-key-map
+(def default-key-map
   {:symbol :symbol
    :name :Name
    :last :LastTradePriceOnly
@@ -197,7 +199,7 @@
    :low :DaysLow
    :volume :Volume})
 
-(defvar- default-quote-parser* (build-quote-parser default-key-map))
+(def default-quote-parser* (build-quote-parser default-key-map))
 
 (defn default-quote-parser
   "The quote parser used by `get-quote` and `get-quotes` when a custom quote
