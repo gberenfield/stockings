@@ -1,4 +1,4 @@
-(defproject org.clogars.gberenfield/s1ockings "1.1.2-SNAPSHOT"
+(defproject org.clogars.gberenfield/stockings "1.1.2-SNAPSHOT"
   :description "Easy access to financial data: stock quotes, exchange rates, industry sectors, companies, and more."
   :url "https://github.com/gberenfield/stockings"
   :dependencies [[org.clojure/clojure "1.4.0"]
