@@ -1,4 +1,4 @@
-(defproject com.fxtlabs/stockings "1.1.1-SNAPSHOT"
+(defproject org.clogars.gberenfield/stockings "1.1.1-SNAPSHOT"
   :description "Easy access to financial data: stock quotes, exchange rates, industry sectors, companies, and more."
   :url "https://github.com/fxtlabs/stockings"
   :dependencies [[org.clojure/clojure "1.4.0"]
@@ -9,7 +9,7 @@
   :dev-dependencies 
   [[com.fxtlabs/autodoc "0.8.0-SNAPSHOT"
     :exclusions [org.clojure/clojure org.clojure/clojure-contrib]]]
-  :repositories [["snapshots" {:url "https://clojars.org/repo"
+  :repositories [["snapshots" {:url "http://clojars.org/repo"
                            :username "gberenfield" :password :gpg}]]
   :license {:name "Eclipse Public License - v 1.0"
             :url "http://www.eclipse.org/legal/epl-v10.html"
