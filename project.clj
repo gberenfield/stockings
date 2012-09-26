@@ -1,6 +1,6 @@
-(defproject org.clogars.gberenfield/stockings "1.1.1-SNAPSHOT"
+(defproject org.clogars.gberenfield/s1ockings "1.1.2-SNAPSHOT"
   :description "Easy access to financial data: stock quotes, exchange rates, industry sectors, companies, and more."
-  :url "https://github.com/fxtlabs/stockings"
+  :url "https://github.com/gberenfield/stockings"
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [joda-time "1.6"]
                  [org.clojure/data.json "0.1.3"]
@@ -9,8 +9,6 @@
   :dev-dependencies 
   [[com.fxtlabs/autodoc "0.8.0-SNAPSHOT"
     :exclusions [org.clojure/clojure org.clojure/clojure-contrib]]]
-  :repositories [["snapshots" {:url "http://clojars.org/repo"
-                           :username "gberenfield" :password :gpg}]]
   :license {:name "Eclipse Public License - v 1.0"
             :url "http://www.eclipse.org/legal/epl-v10.html"
             :distribution :repo
@@ -20,7 +18,7 @@
    :copyright "Copyright 2011 Filippo Tampieri"
    :root "."
    :source-path "src"
-   :web-src-dir "https://github.com/fxtlabs/stockings/blob/"
+   :web-src-dir "https://github.com/gberenfield/stockings/blob/"
    :web-home "http://stockings.fxtlabs.com/"
    :output-path "autodoc"
    :param-dir "autodoc-params"
