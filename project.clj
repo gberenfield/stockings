@@ -9,6 +9,8 @@
   :dev-dependencies 
   [[com.fxtlabs/autodoc "0.8.0-SNAPSHOT"
     :exclusions [org.clojure/clojure org.clojure/clojure-contrib]]]
+  :repositories [["snapshots" {:url "https://clojars.org/repo"
+                           :username "gberenfield" :password :gpg}]]
   :license {:name "Eclipse Public License - v 1.0"
             :url "http://www.eclipse.org/legal/epl-v10.html"
             :distribution :repo
