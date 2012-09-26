@@ -4,7 +4,6 @@
    by the NASDAQ at <http://www.nasdaq.com/screening/company-list.aspx>."
   {:author "Filippo Tampieri <fxt@fxtlabs.com>"}
   (:use [clojure.string :only (split lower-case upper-case)]
-        [clojure.contrib.def :only (defvar defvar-)]
         [clojure-csv.core :only (parse-csv)]
         [stockings.core :only (explode-stock-symbol)])
   (:require [clj-http.client :as client]))
@@ -13,29 +12,26 @@
 ;;; Stock Exchanges
 ;;;
 
-(defvar nasdaq
-  {:name "NASDAQ Stock Market", :symbol "NASDAQ"}
-  "A map describing the NASDAQ Stock Market (NASDAQ).")
+(def nasdaq {:name "NASDAQ Stock Market", :symbol "NASDAQ"})
+  ;"A map describing the NASDAQ Stock Market (NASDAQ)."
 
-(defvar nyse
-  {:name  "New York Stock Exchange", :symbol "NYSE"}
-  "A map describing the New York Stock Exchange (NYSE).")
+(def nyse {:name  "New York Stock Exchange", :symbol "NYSE"})
+  ;"A map describing the New York Stock Exchange (NYSE)."
 
-(defvar amex
-  {:name "NYSE Amex Equities", :symbol "AMEX"}
-  "A map describing the NYSE Amex Equities (AMEX).")
+(def amex {:name "NYSE Amex Equities", :symbol "AMEX"})
+  ;"A map describing the NYSE Amex Equities (AMEX)."
 
-(defvar exchanges
+(def exchanges
   {:amex amex,
    :nasdaq nasdaq
-   :nyse nyse}
-  "A map from stock exchange keywords to stock exchange info maps.")
+   :nyse nyse})
+  ;"A map from stock exchange keywords to stock exchange info maps."
 
 ;;;
 ;;; Industry Sectors
 ;;;
 
-(defvar industry-sectors
+(def industry-sectors
   ["Basic Industries"
    "Capital Goods"
    "Consumer Durables"
@@ -47,14 +43,14 @@
    "Miscellaneous"
    "Public Utilities"
    "Technology"
-   "Transportation"]
-  "A list of the major industry sectors as classified by the NASDAQ.")
+   "Transportation"])
+  ;"A list of the major industry sectors as classified by the NASDAQ."
 
 ;;;
 ;;; Companies
 ;;;
 
-(defvar- source-url "http://www.nasdaq.com/screening/companies-by-name.aspx")
+(def source-url "http://www.nasdaq.com/screening/companies-by-name.aspx")
 
 ;; Use a record instead of a map for efficiency since the lists of
 ;; companies are pretty long.

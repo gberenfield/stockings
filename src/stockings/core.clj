@@ -4,8 +4,6 @@
    from Yahoo! Finance."
   {:author "Filippo Tampieri <fxt@fxtlabs.com>"}
   (:use [clojure.string :only (split join lower-case)]
-        ;[clojure.contrib.def :only (defvar defvar-)]
-        ;[clojure.contrib.json :only (read-json)])
         [clojure.data.json :only (read-json)])
   (:require [clj-http.client :as client]
             [stockings.utils :as yql])
@@ -93,6 +91,9 @@
 ;;;
 
 (def quote-parse-map
+  ; A map from the keys of a raw stock quote to the parsers used to parse
+  ; the corresponding value strings of the raw stock quote into useful
+  ; typed values (ints, doubles, dates, etc.).
   {:symbol identity
    :Name identity
    :PERatio yql/parse-double
@@ -145,17 +146,14 @@
    :PERatioRealtime yql/parse-double
    :PriceEPSEstimateNextYear yql/parse-double
    :EPSEstimateNextQuarter yql/parse-double
-   :PriceEPSEstimateCurrentYear yql/parse-double}
-  "A map from the keys of a raw stock quote to the parsers used to parse
-   the corresponding value strings of the raw stock quote into useful
-   typed values (ints, doubles, dates, etc.).")
+   :PriceEPSEstimateCurrentYear yql/parse-double})
 
-(def raw-quote-keys (keys quote-parse-map)
-  "A list of all the keys available in a raw stock quote. A custom stock
-   quote can be created by supplying `get-quote` with a parser capable of
-   extracting the value corresponding to a chosen subset of these keys
-   from a raw stock quote and packaging them into the desired result
-   structure.")
+(def raw-quote-keys (keys quote-parse-map))
+  ;"A list of all the keys available in a raw stock quote. A custom stock
+  ; quote can be created by supplying `get-quote` with a parser capable of
+  ; extracting the value corresponding to a chosen subset of these keys
+  ; from a raw stock quote and packaging them into the desired result
+  ; structure."
 
 (defn parse-quote-item
   "Looks up the value of a supplied key into a raw stock quote and

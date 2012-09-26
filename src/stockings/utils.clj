@@ -3,9 +3,6 @@
    (Yahoo! Query Language) and parse a variety of value types."
   {:author "Filippo Tampieri <fxt@fxtlabs.com>"}
   (:use [clojure.string :only (join lower-case)]
-        ;[clojure.contrib.def :only (defvar defvar-)]
-        [clojure.data.json :only (read-json)]
-        ;[clojure.contrib.json :only (read-json)])
         [clojure.data.json :only (read-json)])
   (:require [clj-http.client :as client])
   (:import (org.joda.time DateTime LocalDate)

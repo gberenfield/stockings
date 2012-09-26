@@ -99,12 +99,11 @@
   [^String s]
   (.toLocalDate (.parseDateTime date-parser s)))
 
-(def re-line
-  #"((?:[0-9]|[123][0-9])-\w{3}-[0-9]{2}),([0-9]+(?:\.[0-9]*)?),([0-9]+(?:\.[0-9]*)?),([0-9]+(?:\.[0-9]*)?),([0-9]+(?:\.[0-9]*)?),([0-9]+(?:\.[0-9]*)?)"
-  "The regular expression used to match one line in the CSV-encoded quotes.
-   It matches a line in the form `Date,Open,High,Low,Close,Volume`
-   where the `Date` is given as dd-MMM-yy and the other fields are
-   non-negative numbers with an optional fractional part.")
+(def re-line #"((?:[0-9]|[123][0-9])-\w{3}-[0-9]{2}),([0-9]+(?:\.[0-9]*)?),([0-9]+(?:\.[0-9]*)?),([0-9]+(?:\.[0-9]*)?),([0-9]+(?:\.[0-9]*)?),([0-9]+(?:\.[0-9]*)?)")
+  ;"The regular expression used to match one line in the CSV-encoded quotes.
+  ; It matches a line in the form `Date,Open,High,Low,Close,Volume`
+  ; where the `Date` is given as dd-MMM-yy and the other fields are
+  ; non-negative numbers with an optional fractional part."
 
 (defn- valid-record?
   "A predicate that validates whether the regular expression matches
