@@ -3,7 +3,6 @@
    from Google Finance."
   {:author "Filippo Tampieri <fxt@fxtlabs.com>"}
   (:use [clojure.string :only (join split-lines)]
-        ;[clojure.contrib.def :only (defvar)]
         [stockings.utils :only (parse-double parse-int parse-long parse-keyword)]
         [stockings.core :only (bare-stock-symbol)])
   (:require [clojure.xml :as xml]
